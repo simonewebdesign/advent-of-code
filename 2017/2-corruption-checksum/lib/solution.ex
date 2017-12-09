@@ -1,6 +1,4 @@
 defmodule Solution do
-  alias CorruptionChecksum, as: C
-
   def run do
     "input"
     |> File.read!
@@ -15,10 +13,6 @@ defmodule Solution do
     |> String.split("\t")
     |> Enum.map(&String.to_integer/1)
 
-    largest = C.largest_value(list)
-    smallest = C.smallest_value(list)
-
-    diff = largest - smallest
-    diff
+    Enum.max(list) - Enum.min(list)
   end
 end
