@@ -16,11 +16,17 @@
       (if (> fuel 0)
         (recur (+ acc fuel) fuel) acc))))
 
+
+(defn to-int
+  [x]
+  (Integer/valueOf x))
+
+
 (defn get-fuels
   "Parse input.txt"
   []
   (map
-    read-string
+    read-string     ; this works but it is unsafe, to-int above should be safer
     (clojure.string/split-lines
       (slurp "input.txt"))))
 
