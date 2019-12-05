@@ -30,7 +30,7 @@
 
 
 (deftest test-input
-  (is (= (input "test.txt") ["1" "2" "3"])))
+  (is (= (input "test.txt") [1 2 3])))
 
 
 (deftest test-numbers
@@ -60,3 +60,8 @@
 (deftest test-process3
   (testing "returns the altered output"
     (is (= (process [1 1 1 4 99 5 6 0 99] 0) [30 1 1 4 2 5 6 0 99]))))
+
+
+(deftest test-numbers-restored
+  (testing "swaps numbers in position one and two with 12 and 2"
+    (is (= (numbers-restored [1 2 3 4]) [1 12 2 4]))))

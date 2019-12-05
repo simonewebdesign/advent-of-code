@@ -26,24 +26,31 @@
   (str/split in #","))
 
 
-(defn input
-  [name]
-  (->
-    name
-    read-file
-    split-on-comma))
-
-
 (defn numbers
   [list]
   (map to-int list))
 
 
+(defn numbers-restored
+  [list]
+  (->
+    list
+    (assoc 1 12)
+    (assoc 2 2)))
+
+
+(defn input
+  [name]
+  (->
+    name
+    read-file
+    split-on-comma
+    numbers))
+
+
 (defn process
   [seq idx]
-  (let [
-    op (nth seq idx)
-    ]
+  (let [op (nth seq idx 0)]
     (case op
       1 (let [
         in1-pos (nth seq (+ 1 idx))
@@ -68,5 +75,9 @@
       99 seq
       seq)))
 
-; (println "OUTPUT:")
-; (println (process list 0))
+
+(println "OUTPUT:")
+(println
+  (process
+    (numbers-restored
+      (input "input.txt"))))
