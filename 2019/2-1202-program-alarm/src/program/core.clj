@@ -28,7 +28,7 @@
 
 (defn numbers
   [list]
-  (map to-int list))
+  (mapv to-int list))
 
 
 (defn numbers-restored
@@ -50,7 +50,7 @@
 
 (defn process
   [seq idx]
-  (let [op (nth seq idx 0)]
+  (let [op (nth seq idx)]
     (case op
       1 (let [
         in1-pos (nth seq (+ 1 idx))
@@ -80,4 +80,4 @@
 (println
   (process
     (numbers-restored
-      (input "input.txt"))))
+      (input "input.txt")) 0))
